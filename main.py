@@ -2,6 +2,51 @@
 # Revisão de Orientação a Objetos
 # Prof. Guilherme Leal Santos
 
+#Aula 26/09 - Agregação, Composição, Encapsulamento
+from conta import Conta
+from cliente import Cliente
+
+cliente1 = Cliente('Elvis Presley', '111.222.333-44')
+conta1 = Conta(cliente1, 1, 123, 'elvis@gmail.com', 10000)
+conta1.extrato()
+conta1.saca(500)
+conta1.deposita(300)
+conta1.saldo = 1
+
+cliente2 = Cliente('Jonhny Cage', '222.333.444-55')
+conta2 = Conta(cliente2, 2, 234, 'jonhny@outlook.com', 5000)
+conta2.extrato()
+conta2.saca(100)
+conta2.deposita(600)
+conta2.saldo = 1000000
+
+conta1.transfere(conta2, 2000)
+conta2.saca(10000)
+
+conta1.historico.imprime()
+conta2.historico.imprime()
+
+
+'''
+#Aula 19/20 - Orientação a Objetos
+
+from conta import Conta
+from cliente import Cliente
+
+cliente1 = Cliente('Elvis Presley', '111.222.333-44')
+conta1 = Conta(cliente1, 1, 123, 'elvis@gmail.com', 12345678)
+conta1.extrato()
+
+cliente2 = Cliente('Jonhny Cage', '222.333.444-55')
+conta2 = Conta(cliente2, 2, 234, 'jonhny@outlook.com', 23456789)
+conta2.extrato()
+
+if(conta2.transfere(conta1, 1000)):
+    print('OK')
+else:
+    print('Ta Liso')
+'''
+'''
 #Lista de palavras
 frutas = ['Maçã', 'Banana', 'Laranja']
 print(frutas)
@@ -54,3 +99,4 @@ print(numeros_filtro)
 from functools import reduce
 soma = reduce(lambda soma, n: soma + n, numeros)
 print(soma)
+'''
