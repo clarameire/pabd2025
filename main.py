@@ -2,9 +2,34 @@
 # Revisão de Orientação a Objetos
 # Prof. Guilherme Leal Santos
 
-#Aula 26/09 - Agregação, Composição, Encapsulamento
 from conta import Conta
 from cliente import Cliente
+from funcionario.funcionario import Funcionario
+from funcionario.gerente import Gerente
+
+#Aula 10/10 - Métodos estáticos, métodos de classe
+#Herança e reescrita de métodos
+
+f = Funcionario('Bartô Galeno', '111.222.333-44', 50000)
+print(f)
+print(f.get_bonificacao())
+g = Gerente('Reginaldo Rossi', '777.222.333-88', 250000, 1234, 10)
+print(g)
+print(g.get_bonificacao())
+
+'''
+cliente1 = Cliente('Elvis Presley', '111.222.333-44')
+conta1 = Conta(cliente1, 1, 123, 'elvis@gmail.com', 10000)
+print(Conta.total_contas())
+
+cliente2 = Cliente('Jonhny Cage', '222.333.444-55')
+conta2 = Conta(cliente2, 2, 234, 'jonhny@outlook.com', 5000)
+print(Conta.total_contas())
+
+print(Conta.lista_contas())
+print(Conta.get_saldo_total())
+
+#Aula 26/09 - Agregação, Composição, Encapsulamento
 
 cliente1 = Cliente('Elvis Presley', '111.222.333-44')
 conta1 = Conta(cliente1, 1, 123, 'elvis@gmail.com', 10000)
@@ -27,7 +52,7 @@ conta1.historico.imprime()
 conta2.historico.imprime()
 
 
-'''
+
 #Aula 19/20 - Orientação a Objetos
 
 from conta import Conta

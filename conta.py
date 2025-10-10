@@ -1,6 +1,29 @@
 from historico import Historico
+from functools import reduce
 
 class Conta:
+    #Atributo de classe
+    _total_contas = 0
+    _lista_contas = []
+    
+    #Métodos estáticos
+    @staticmethod
+    def total_contas():
+        return Conta._total_contas
+    
+    @staticmethod
+    def lista_contas():
+        return Conta._lista_contas
+    
+    @staticmethod
+    def get_saldo_total():
+        return reduce(lambda soma, conta: soma + conta._saldo, Conta._lista_contas, 0)
+    
+    #Métodos de classe
+    @classmethod
+    def total_contas_cm(cls):
+        return cls._total_contas()
+    
     def __init__(self, cliente, agencia, numero, pix, saldo):
         self.cliente = cliente #agregação
         self.agencia = agencia
@@ -8,13 +31,14 @@ class Conta:
         self.pix = pix
         self._saldo = saldo
         self.historico = Historico() #composição
+        Conta._total_contas += 1
+        Conta._lista_contas.append(self)
 
-    #
-    
-
-    # getters/setters
+    # Decorator - property
+    @property
     def get_saldo(self):
         return self._saldo
+    
     
     # Não se aplica ao atributo saldo
     #def set_saldo(self, saldo):
