@@ -4,8 +4,38 @@
 
 from conta import Conta
 from cliente import Cliente
-from funcionario.funcionario import Funcionario
+from empresa.config.database import SupabaseConnection
+from funcionario.controle_de_bonificacoes import ControleDeBonificacoes
+# from funcionario.funcionario import Funcionario
 from funcionario.gerente import Gerente
+from ifrn.pessoa import Pessoa
+from ifrn.funcionario import Funcionario
+
+#Aula 17/10 - Polimorfismo, Classes Abstratas, Supabase
+
+connection = SupabaseConnection()
+client = connection.client
+
+# pessoa = Pessoa('Guilherme', '111.222.333-44')
+# print(pessoa)
+
+# f = Funcionario('Guilherme', '111.222.333-44', '188651')
+# print(f)
+
+
+# f = Funcionario('Bartô Galeno', '111.222.333-44', 50000)
+# print(f)
+# print(f.get_bonificacao())
+# g = Gerente('Reginaldo Rossi', '777.222.333-88', 250000, 1234, 10)
+# print(g)
+# print(g.get_bonificacao())
+
+# controle = ControleDeBonificacoes()
+# controle.registra(f)
+# controle.registra(g)
+# print(f'Total = R$ {controle.total:.2f}')
+
+'''
 
 #Aula 10/10 - Métodos estáticos, métodos de classe
 #Herança e reescrita de métodos
@@ -17,7 +47,6 @@ g = Gerente('Reginaldo Rossi', '777.222.333-88', 250000, 1234, 10)
 print(g)
 print(g.get_bonificacao())
 
-'''
 cliente1 = Cliente('Elvis Presley', '111.222.333-44')
 conta1 = Conta(cliente1, 1, 123, 'elvis@gmail.com', 10000)
 print(Conta.total_contas())
