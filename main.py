@@ -2,6 +2,12 @@
 # Revisão de Orientação a Objetos
 # Prof. Guilherme Leal Santos
 
+
+
+
+
+
+'''
 from conta import Conta
 from cliente import Cliente
 from empresa.config.database import SupabaseConnection
@@ -35,7 +41,7 @@ client = connection.client
 # controle.registra(g)
 # print(f'Total = R$ {controle.total:.2f}')
 
-'''
+
 
 #Aula 10/10 - Métodos estáticos, métodos de classe
 #Herança e reescrita de métodos

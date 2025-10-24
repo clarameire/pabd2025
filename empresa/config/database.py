@@ -13,7 +13,8 @@ class SupabaseConnection:
     '''
 
     _instance = None
-    # Type Hint - garante o tipo de dado a ser atribuído a um atributo/variável
+    # Type Hint 
+    # * Garante o tipo de dado a ser atribuído a um atributo/variável
     _client: Client = None
 
     # new - cria a instância da classe
