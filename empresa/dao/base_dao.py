@@ -29,10 +29,28 @@ class BaseDAO(ABC, Generic[T]):
         pass
 
     # Create
+    def create(self, pk: str, value: T) -> Optional[T]:
+        try:
+            data = self.to_dict(pk, value)
+            response = self._client.table(self._table_name).insert(data).execute()
+            return [self.to_model(response.data[0])]
+        except Exception as e:
+            print(f'Erro ao criar registro: {e}')
+            return None
 
     # Read
+    def read(self, pk: str, value: T) -> Optional[T]:
+        try:
+            response = self._client.table(self._table_name).select('*').eq(pk, value).execute()
+            if response.data and len(response.data):
+                return self.to_model(response.data[0])
+            return None
+        except Exception as e:
+            print(f'Erro ao buscar todos os registros: {e}')
+            return None
+
         #Retorna todos os valores de uma tabela
-    def read_all(self):
+    def read_all(self) -> List[T]:
         try:
             response = self._client.table(self._table_name).select('*').execute()
             if response.data:
@@ -41,5 +59,27 @@ class BaseDAO(ABC, Generic[T]):
         except Exception as e:
             print(f'Erro ao buscar todos os registros: {e}')
             return []
+    
     # Update
+    def update(self, pk: str, value: T, model: T) -> Optional[T]:
+        try:
+            data = self.to_dict(model)
+            response = self._client.table(self._table_name).update(data).eq(pk, value).execute()
+            if response.data and len(response.data) > 0:
+                return [self.to_model(response.data[0])]
+            return None
+        except Exception as e:
+            print(f'Erro ao atualizar registro: {e}')
+            return None
+    
     # Delete
+    def delete(self, pk: str, value: T) -> Optional[T]:
+        try:
+            data = self.to_dict(pk, value)
+            response = self._client.table(self._table_name).delete(data).execute()
+            if response.data and len(response.data) > 0:
+                return [self.to_model(response.data[0])]
+            return None
+        except Exception as e:
+            print(f'Erro ao deletar registro: {e}')
+            return None
