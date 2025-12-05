@@ -4,14 +4,9 @@
 
 from empresa.config.database import SupabaseConnection
 from empresa.dao.funcionario_dao import FuncionarioDAO
-from datetime import date
 from empresa.dao.departamento_dao import DepartamentoDAO
-from empresa.models.departamento import Departamento
-
-client = SupabaseConnection().client
 
 # CRUD - Create, Read, Update, Delete
-
 client = SupabaseConnection().client
 
 # Criando DAO para acessar a tabela funcionario
@@ -20,18 +15,21 @@ funcionario_dao = FuncionarioDAO(client)
 # Criando DAO para acessar a tabela departamento
 departamento_dao = DepartamentoDAO(client)
 
-#Read all
+#Read all -> Funcionários
 for funcionario in funcionario_dao.read_all():
     print(funcionario)
 
-#Read
+#Read all -> Departamentos
+for departamento in departamento_dao.read_all():
+    print(departamento)
+
+#Read -> 1 funcionário
 f = funcionario_dao.read('cpf', '11122233344')
 print(f)
 
-#Delete
-f = funcionario_dao.delete('cpf', '11122233344')
-print(f)
-
+#Read -> 1 departamento
+d = departamento_dao.read('numero', '101')
+print(d)
 
 '''
 from conta import Conta
