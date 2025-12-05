@@ -6,6 +6,7 @@ from empresa.config.database import SupabaseConnection
 from empresa.dao.funcionario_dao import FuncionarioDAO
 from empresa.dao.departamento_dao import DepartamentoDAO
 
+
 # CRUD - Create, Read, Update, Delete
 client = SupabaseConnection().client
 
